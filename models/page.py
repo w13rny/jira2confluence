@@ -1,14 +1,14 @@
-from models.section import Section
+from models.issuedata import IssueData
 from datetime import datetime
 
 
 class Page:
-    sections = []
+    issues = []
 
     def __init__(self, issues):
-        self.sections = []
+        self.issues = []
         for issue in issues['issues']:
-            self.sections.append(Section(issue))
+            self.issues.append(IssueData(issue))
 
     @property
     def table_of_content(self) -> str:
@@ -27,11 +27,11 @@ class Page:
     @property
     def body(self) -> str:
         page_content = [self.table_of_content]
-        if self.sections:
-            for section in self.sections:
-                page_content.append(section.summary)
-                page_content.append(section.issue_url)
-                page_content.append(section.description)
+        if self.issues:
+            for issue in self.issues:
+                page_content.append(issue.summary)
+                page_content.append(issue.issue_url)
+                page_content.append(issue.description_with_img_urls)
                 page_content.append(self.separator)
         page_content.append(self.footer)
         body = '\n'.join(page_content)
