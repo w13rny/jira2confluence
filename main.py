@@ -1,8 +1,18 @@
+import time
+
 from atlassian import Confluence
 from atlassian import Jira
 
 import config as cfg
 from models.page import Page
+
+
+def fix_newlines(confluence_page_obj: dict) -> str:
+    body = confluence_page_obj['body']['storage']['value']
+    body = body.replace('<br />\n', '\n')
+    body = body.replace('\t', '')
+    return body
+
 
 if __name__ == '__main__':
     jira = Jira(
@@ -30,3 +40,18 @@ if __name__ == '__main__':
             minor_edit=False
         )
         print(page['page_title'] + ' - strona została zaktualizowana.')
+
+    time.sleep(1)
+
+    for page in cfg.pages:
+        page_obj = confluence.get_page_by_id(page['page_id'], expand='body.storage')
+        new_body = fix_newlines(page_obj)
+        confluence.update_page(
+            page_id=page['page_id'],
+            title=page['page_title'],
+            body=new_body,
+            type='page',
+            representation='storage',
+            minor_edit=False
+        )
+        print(page['page_title'] + ' - na stronie zostały naprawione znaki nowej linii.')
