@@ -26,7 +26,7 @@ class IssueData:
 
     @property
     def issue_url(self) -> str:
-        return cfg.jira['issue_url_prefix'] + self.issue_key
+        return cfg.jira['url'] + '/browse/' + self.issue_key
 
     @property
     def description_with_img_urls(self):
