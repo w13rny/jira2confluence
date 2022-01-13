@@ -1,3 +1,5 @@
+import re
+
 import config as cfg
 
 
@@ -34,4 +36,5 @@ class IssueData:
         if self.attachments:
             for attachment in self.attachments:
                 desc = desc.replace(attachment['filename'], attachment['content'])
+            desc = re.sub(r'(\|width\=\d{1,4},height\=\d{1,4}!)', '|width=360,height=640!', desc)
         return desc
