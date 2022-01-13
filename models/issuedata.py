@@ -14,7 +14,7 @@ class IssueData:
     description = ''
     attachments = None
 
-    def __init__(self, issue):
+    def __init__(self, issue: dict):
         self.issue_key = issue['key']
         self.summary = 'h1. ' + keep_brackets(issue['fields']['summary'])
         if issue['fields']['description']:
@@ -29,7 +29,7 @@ class IssueData:
         return cfg.jira['url'] + '/browse/' + self.issue_key
 
     @property
-    def description_with_img_urls(self):
+    def description_with_img_urls(self) -> str:
         desc = self.description
         if self.attachments:
             for attachment in self.attachments:

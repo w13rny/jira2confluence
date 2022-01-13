@@ -5,7 +5,7 @@ from datetime import datetime
 class Page:
     issues = []
 
-    def __init__(self, issues):
+    def __init__(self, issues: dict):
         self.issues = []
         for issue in issues['issues']:
             self.issues.append(IssueData(issue))
