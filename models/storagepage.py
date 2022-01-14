@@ -20,7 +20,7 @@ def jira_links_to_macros(body: str) -> str:
 
 
 class StoragePage:
-    body = ''
+    body: str = ''
 
     def __init__(self, confluence_page: dict):
         self.body = confluence_page['body']['storage']['value']

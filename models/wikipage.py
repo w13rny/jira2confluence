@@ -1,9 +1,11 @@
+from typing import List
+
 from models.jiraissue import JiraIssue
 from datetime import datetime
 
 
 class WikiPage:
-    issues = []
+    issues: List[JiraIssue] = []
 
     def __init__(self, issues: dict):
         self.issues = []

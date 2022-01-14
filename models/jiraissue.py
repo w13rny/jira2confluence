@@ -1,4 +1,5 @@
 import re
+from typing import List
 
 import config as cfg
 
@@ -11,10 +12,10 @@ def keep_brackets(string: str) -> str:
 
 
 class JiraIssue:
-    issue_key = ''
-    summary = ''
-    description = ''
-    attachments = None
+    issue_key: str = ''
+    summary: str = ''
+    description: str = ''
+    attachments: List[dict] = None
 
     def __init__(self, issue: dict):
         self.issue_key = issue['key']
