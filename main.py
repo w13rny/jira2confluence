@@ -52,6 +52,8 @@ if __name__ == '__main__':
         )
         print(page['page_title'] + ' - strona została zaktualizowana.')
 
+    # when script process only one Confluence page, 2 quick requests to update the same page causes the conflict error
+    # this sleep is for avoiding the issue
     time.sleep(1)
 
     for page in cfg.pages:
