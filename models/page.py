@@ -34,5 +34,5 @@ class Page:
                 page_content.append(issue.description_with_img_urls)
                 page_content.append(self.separator)
         page_content.append(self.footer)
-        body = '\n'.join(page_content)
+        body = '\n\n'.join(page_content)
         return body
