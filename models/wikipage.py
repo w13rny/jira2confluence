@@ -1,14 +1,14 @@
-from models.issuedata import IssueData
+from models.jiraissue import JiraIssue
 from datetime import datetime
 
 
-class Page:
+class WikiPage:
     issues = []
 
     def __init__(self, issues: dict):
         self.issues = []
         for issue in issues['issues']:
-            self.issues.append(IssueData(issue))
+            self.issues.append(JiraIssue(issue))
 
     @property
     def table_of_content(self) -> str:

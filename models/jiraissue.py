@@ -10,7 +10,7 @@ def keep_brackets(string: str) -> str:
     return result_string
 
 
-class IssueData:
+class JiraIssue:
     issue_key = ''
     summary = ''
     description = ''
