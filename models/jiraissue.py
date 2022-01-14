@@ -36,5 +36,6 @@ class JiraIssue:
         if self.attachments:
             for attachment in self.attachments:
                 desc = desc.replace(attachment['filename'], attachment['content'])
-            desc = re.sub(r'(\|width\=\d{1,4},height\=\d{1,4}!)', '|width=360,height=640!', desc)
+            img_properties = f"|width={cfg.confluence['img_width']},height={cfg.confluence['img_height']}!"
+            desc = re.sub(r'(\|width\=\d{1,4},height\=\d{1,4}!)', img_properties, desc)
         return desc
