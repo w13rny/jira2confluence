@@ -67,4 +67,4 @@ if __name__ == '__main__':
             representation='storage',
             minor_edit=False
         )
-        print(page['page_title'] + ' - strona została skorygowana (znaki nowej linii i marka linków do Jiry).')
+        print(page['page_title'] + ' - strona została skorygowana (znaki nowej linii i makra linków do Jiry).')
